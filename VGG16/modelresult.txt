@@ -1,0 +1,132 @@
+Found 6231 images belonging to 24 classes.
+Found 3114 images belonging to 24 classes.
+Found 3110 images belonging to 24 classes.
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 1s/step
+Image 1:
+   pomegranate (0.47)
+   Granny_Smith (0.17)
+   orange (0.07)
+Image 2:
+   fig (0.64)
+   pomegranate (0.16)
+   Granny_Smith (0.13)
+Image 3:
+   Granny_Smith (0.35)
+   orange (0.12)
+   strawberry (0.10)
+Image 4:
+   Granny_Smith (0.76)
+   acorn (0.23)
+   spaghetti_squash (0.00)
+Image 5:
+   Granny_Smith (0.80)
+   spaghetti_squash (0.14)
+   lemon (0.02)
+Image 6:
+   golf_ball (0.95)
+   ping-pong_ball (0.02)
+   orange (0.01)
+Image 7:
+   Granny_Smith (0.76)
+   acorn (0.20)
+   spaghetti_squash (0.02)
+Image 8:
+   fig (0.40)
+   pomegranate (0.24)
+   spaghetti_squash (0.15)
+Image 9:
+   bell_pepper (0.20)
+   acorn_squash (0.17)
+   bulletproof_vest (0.10)
+Image 10:
+   pomegranate (0.56)
+   Granny_Smith (0.14)
+   fig (0.14)
+Image 11:
+   Granny_Smith (0.76)
+   spaghetti_squash (0.19)
+   butternut_squash (0.01)
+Image 12:
+   Granny_Smith (0.46)
+   acorn (0.40)
+   spaghetti_squash (0.09)
+Image 13:
+   custard_apple (0.70)
+   cucumber (0.23)
+   acorn (0.02)
+Image 14:
+   custard_apple (0.97)
+   fig (0.01)
+   Granny_Smith (0.01)
+Image 15:
+   tick (0.29)
+   fig (0.23)
+   pomegranate (0.18)
+Image 16:
+   Granny_Smith (0.53)
+   spaghetti_squash (0.22)
+   lemon (0.10)
+Image 17:
+   golf_ball (0.40)
+   orange (0.24)
+   strawberry (0.08)
+Image 18:
+   fig (0.69)
+   pomegranate (0.19)
+   strawberry (0.04)
+Image 19:
+   custard_apple (0.99)
+   Granny_Smith (0.00)
+   tick (0.00)
+Image 20:
+   Granny_Smith (0.83)
+   lemon (0.02)
+   spaghetti_squash (0.01)
+Image 21:
+   custard_apple (0.81)
+   Granny_Smith (0.13)
+   fig (0.02)
+Image 22:
+   spaghetti_squash (0.85)
+   butternut_squash (0.09)
+   Granny_Smith (0.02)
+Image 23:
+   pomegranate (0.39)
+   Granny_Smith (0.20)
+   buckeye (0.19)
+Image 24:
+   Granny_Smith (0.90)
+   acorn (0.02)
+   tick (0.01)
+Image 25:
+   pomegranate (0.47)
+   Granny_Smith (0.27)
+   buckeye (0.07)
+Image 26:
+   pomegranate (0.32)
+   Granny_Smith (0.17)
+   fig (0.14)
+Image 27:
+   strawberry (0.80)
+   pomegranate (0.07)
+   Granny_Smith (0.04)
+Image 28:
+   Granny_Smith (0.64)
+   acorn (0.17)
+   spaghetti_squash (0.10)
+Image 29:
+   bell_pepper (0.98)
+   acorn_squash (0.00)
+   fig (0.00)
+Image 30:
+   fig (0.20)
+   acorn (0.18)
+   butternut_squash (0.18)
+Image 31:
+   pomegranate (0.41)
+   Granny_Smith (0.21)
+   orange (0.08)
+Image 32:
+   Granny_Smith (0.59)
+   pomegranate (0.35)
+   buckeye (0.01)
