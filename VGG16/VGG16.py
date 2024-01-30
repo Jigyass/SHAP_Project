@@ -1,9 +1,19 @@
+import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import preprocess_input, decode_predictions
 from tensorflow.keras.applications import VGG16
 import numpy as np
 import shap
 import os
+
+# Configure TensorFlow to use dynamic memory allocation
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(e)
 
 # Path to a single image for testing
 image_path = '/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Test/apple_6/r0_259.jpg'  # Replace with the path to your image
