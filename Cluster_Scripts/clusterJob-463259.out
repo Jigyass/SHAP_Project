@@ -1,0 +1,150 @@
+
+The following have been reloaded with a version change:
+  1) Python/3.9.12 => Python/3.10.2
+
+SHAP is already installed.
+2024-02-01 17:39:28.812500: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-02-01 17:39:30.515779: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /nfs/apps/7/arch/generic/cuDNN/8.8.0.121-CUDA-11.x/cuda/lib:/nfs/apps/7/arch/generic/CUDA/11.7.0/lib64:/nfs/apps/7/arch/generic/Python/3.10.2/lib:/nfs/apps/7/arch/generic/OpenSSL/1.1.1i/lib
+2024-02-01 17:39:30.515888: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /nfs/apps/7/arch/generic/cuDNN/8.8.0.121-CUDA-11.x/cuda/lib:/nfs/apps/7/arch/generic/CUDA/11.7.0/lib64:/nfs/apps/7/arch/generic/Python/3.10.2/lib:/nfs/apps/7/arch/generic/OpenSSL/1.1.1i/lib
+2024-02-01 17:39:30.515903: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Found 6231 images belonging to 24 classes.
+Found 3114 images belonging to 24 classes.
+Found 3110 images belonging to 24 classes.
+2024-02-01 17:39:34.428853: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-02-01 17:39:35.118452: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 30971 MB memory:  -> device: 0, name: Tesla V100S-PCIE-32GB, pci bus id: 0000:85:00.0, compute capability: 7.0
+2024-02-01 17:39:38.943457: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:428] Loaded cuDNN version 8800
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 3s 3s/step
+Image 1:
+   pomegranate (0.91)
+   Granny_Smith (0.02)
+   fig (0.02)
+Image 2:
+   Granny_Smith (1.00)
+   acorn (0.00)
+   custard_apple (0.00)
+Image 3:
+   custard_apple (0.47)
+   acorn (0.31)
+   dough (0.08)
+Image 4:
+   custard_apple (0.97)
+   Granny_Smith (0.01)
+   tick (0.00)
+Image 5:
+   pomegranate (0.87)
+   Granny_Smith (0.03)
+   orange (0.02)
+Image 6:
+   Granny_Smith (0.71)
+   spaghetti_squash (0.22)
+   dough (0.02)
+Image 7:
+   Granny_Smith (0.83)
+   fig (0.08)
+   pomegranate (0.04)
+Image 8:
+   strawberry (0.25)
+   Granny_Smith (0.17)
+   orange (0.11)
+Image 9:
+   buckeye (0.27)
+   strawberry (0.16)
+   acorn (0.12)
+Image 10:
+   spaghetti_squash (0.70)
+   dough (0.09)
+   acorn_squash (0.06)
+Image 11:
+   head_cabbage (1.00)
+   cauliflower (0.00)
+   custard_apple (0.00)
+Image 12:
+   pomegranate (0.97)
+   fig (0.01)
+   Granny_Smith (0.01)
+Image 13:
+   Granny_Smith (0.77)
+   acorn (0.07)
+   custard_apple (0.03)
+Image 14:
+   strawberry (0.45)
+   Granny_Smith (0.14)
+   pomegranate (0.08)
+Image 15:
+   bell_pepper (0.68)
+   acorn_squash (0.14)
+   buckeye (0.02)
+Image 16:
+   Granny_Smith (1.00)
+   acorn (0.00)
+   banana (0.00)
+Image 17:
+   bulletproof_vest (0.22)
+   bell_pepper (0.13)
+   caldron (0.09)
+Image 18:
+   spaghetti_squash (0.63)
+   dough (0.22)
+   mashed_potato (0.05)
+Image 19:
+   strawberry (0.44)
+   Granny_Smith (0.13)
+   pomegranate (0.12)
+Image 20:
+   fig (0.57)
+   pomegranate (0.18)
+   strawberry (0.12)
+Image 21:
+   Granny_Smith (1.00)
+   acorn (0.00)
+   tennis_ball (0.00)
+Image 22:
+   bell_pepper (0.35)
+   buckeye (0.13)
+   sleeping_bag (0.08)
+Image 23:
+   buckeye (0.77)
+   fig (0.05)
+   Granny_Smith (0.04)
+Image 24:
+   pomegranate (0.29)
+   Granny_Smith (0.22)
+   orange (0.13)
+Image 25:
+   buckeye (0.33)
+   pomegranate (0.19)
+   acorn (0.14)
+Image 26:
+   tick (0.22)
+   custard_apple (0.16)
+   Granny_Smith (0.14)
+Image 27:
+   custard_apple (0.75)
+   cucumber (0.19)
+   acorn (0.03)
+Image 28:
+   Granny_Smith (0.94)
+   spaghetti_squash (0.04)
+   custard_apple (0.01)
+Image 29:
+   pomegranate (0.56)
+   buckeye (0.13)
+   Granny_Smith (0.06)
+Image 30:
+   Granny_Smith (0.78)
+   pomegranate (0.17)
+   fig (0.02)
+Image 31:
+   pomegranate (0.23)
+   acorn (0.18)
+   Granny_Smith (0.17)
+Image 32:
+   pomegranate (0.62)
+   Granny_Smith (0.10)
+   fig (0.04)
+Traceback (most recent call last):
+  File "/nfs/users/j597s263/SHAP_Project/Cluster_Scripts/clusterJob.py", line 71, in <module>
+    import shap
+ModuleNotFoundError: No module named 'shap'
