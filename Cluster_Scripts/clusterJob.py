@@ -1,3 +1,11 @@
+import sys
+# Update this path to match where your Python packages are installed
+pip_packages_path = '/scratch/j597s263/.local/pip'
+if pip_packages_path not in sys.path:
+    sys.path.append(pip_packages_path)
+
+# Now you can import shap and other modules installed in this location
+import shap
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input
