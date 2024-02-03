@@ -17,12 +17,5 @@ module load TensorFlow/2.11-cp310-gpu
 # Ensure PIP_TARGET is set for the current session, in case it's not already set by .bashrc for non-interactive sessions
 export PIP_TARGET=/scratch/j597s263/.local/pip
 
-# Check if SHAP is already installed in the target directory; if not, install it
-if [ ! -d "$PIP_TARGET/shap" ]; then
-    pip install shap
-else
-    echo "SHAP is already installed."
-fi
-
 # Run your Python script
-python clusterJob.py
+python3 clusterJob.py
