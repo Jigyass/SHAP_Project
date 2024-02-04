@@ -1,61 +1,48 @@
-import torch
-import torchvision
-from torchvision import datasets, models, transforms
-from torchvision.models import VGG16_Weights
+import json
+
 import numpy as np
+import torch
+from torchvision import models
+
 import shap
-import os
 
-# Set device
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Image transformations
-transform = transforms.Compose([
-    transforms.Resize(256),
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
 
-# Load datasets
-train_dataset = datasets.ImageFolder(root='/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Training', transform=transform)
-val_dataset = datasets.ImageFolder(root='/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Validation', transform=transform)
-test_dataset = datasets.ImageFolder(root='/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Test', transform=transform)
+mean = [0.485, 0.456, 0.406]
+std = [0.229, 0.224, 0.225]
 
-# Data loaders
-train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
-val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=32, shuffle=False)
-test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False)
 
-# Load the pre-trained VGG16 model
-model = models.vgg16(weights=VGG16_Weights.IMAGENET1K_V1).to(device)
+def normalize(image):
+    if image.max() > 1:
+        image /= 255
+    image = (image - mean) / std
+    # in addition, roll the axis so that they suit pytorch
+    return torch.tensor(image.swapaxes(-1, 1).swapaxes(2, 3)).float()
 
-# Example of making predictions with the model
-model.eval()
-with torch.no_grad():
-    for batch, _ in test_loader:
-        batch = batch.to(device)
-        outputs = model(batch)
-        # Get the top 3 predictions
-        _, top_preds = torch.topk(outputs, 3, dim=1)
-        for i, preds in enumerate(top_preds):
-            print(f"Image {i+1}:")
-            for idx in preds:
-                print(f"   Class Index: {idx.item()}")
-        break  # Break after first batch to avoid predicting on the entire dataset
+# load the model
+model = models.vgg16(pretrained=True).eval()
 
-# SHAP analysis
-model.eval()
-data_for_shap, _ = next(iter(test_loader))
-data_for_shap = data_for_shap.to(device)
+X, y = shap.datasets.imagenet50()
 
-# Initialize the SHAP explainer
-explainer = shap.GradientExplainer((model, model.features[7]), data_for_shap)
+X /= 255
 
-# Compute SHAP values
-shap_values, indexes = explainer.shap_values(data_for_shap, ranked_outputs=2, nsamples=50)
+to_explain = X[[9, 41]]
 
-# Visualize the SHAP values
-#shap.image_plot(shap_values, -data_for_shap.cpu().numpy())
-shap.plots.waterfall(shap_values[0])
+# load the ImageNet class names
+url = "https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json"
+fname = shap.datasets.cache(url)
+with open(fname) as f:
+    class_names = json.load(f)
 
+e = shap.GradientExplainer((model, model.features[7]), normalize(X))
+shap_values, indexes = e.shap_values(
+    normalize(to_explain), ranked_outputs=2, nsamples=200
+)
+
+# get the names for the classes
+index_names = np.vectorize(lambda x: class_names[str(x)][1])(indexes)
+
+# plot the explanations
+shap_values = [np.swapaxes(np.swapaxes(s, 2, 3), 1, -1) for s in shap_values]
+
+shap.image_plot(shap_values, to_explain, index_names)

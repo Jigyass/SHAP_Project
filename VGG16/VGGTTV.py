@@ -1,6 +1,20 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input
 
+import os
+import tensorflow as tf
+import shap
+import numpy as np
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.vgg16 import preprocess_input, VGG16, decode_predictions
+
+# Disable GPU
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
+# Check if TensorFlow is now using the CPU
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+
 # Dataset paths
 train_dir = '/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Training'
 validation_dir = '/home/darksst/Desktop/SHAP_Project/fruits-360-original-size/fruits-360-original-size/Validation'
@@ -66,7 +80,7 @@ for batch, _ in test_generator:
 
     # Break after first batch to avoid predicting on the entire dataset
     break
-
+'''
 import shap
 import numpy as np
 
@@ -86,4 +100,4 @@ shap_values = explainer.shap_values(data_for_shap)
 # Visualize the SHAP values for the first prediction
 # Adjust the index to see other predictions
 shap.image_plot(shap_values, -data_for_shap, show=False)
-
+'''

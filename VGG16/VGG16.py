@@ -35,7 +35,7 @@ decoded_predictions = decode_predictions(predictions, top=3)[0]
 print("Predictions:")
 for i, (imagenet_id, label, score) in enumerate(decoded_predictions):
     print(f"   {i + 1}: {label} ({score:.2f})")
-
+'''
 # Initialize the SHAP explainer
 explainer = shap.DeepExplainer(model, img_array)
 
@@ -44,4 +44,5 @@ shap_values = explainer.shap_values(img_array)
 
 # Visualize the SHAP values
 shap.image_plot(shap_values, -img_array)
+'''
 
