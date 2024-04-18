@@ -34,8 +34,8 @@ std = np.array([0.229, 0.224, 0.225])
 # SHAP Explainer
 explainer = shap.GradientExplainer((model, model.features[7]), normalize(X, mean, std))
 
-# List to store data frames
-df_list = []
+# Initialize an array to accumulate SHAP values for averaging
+aggregate_shap_values = None
 
 # Process each image
 for i in range(len(X)):
@@ -44,21 +44,31 @@ for i in range(len(X)):
     normalized_image = normalize(to_explain, mean, std)
     shap_values, indexes = explainer.shap_values(normalized_image, ranked_outputs=1, nsamples=50)
 
-    # Each SHAP value array corresponds to a class. For ImageNet, the length of shap_values should be 1 due to ranked_outputs=1
-    feature_shap_values = shap_values[0][0]  # Get SHAP values for the top class
+    # Aggregate SHAP values
+    if aggregate_shap_values is None:
+        aggregate_shap_values = np.abs(shap_values[0]).reshape(1, -1)  # Initialize the aggregate values
+    else:
+        aggregate_shap_values += np.abs(shap_values[0]).reshape(1, -1)  # Sum SHAP values
 
-    # Flatten SHAP values and store each feature's value
-    feature_shap_values_flat = feature_shap_values.flatten()
-    temp_df = pd.DataFrame({
-        "Image Index": i,
-        "Feature Index": range(len(feature_shap_values_flat)),
-        "SHAP Value": feature_shap_values_flat
-    })
-    df_list.append(temp_df)
+# Compute the average of SHAP values across all images
+average_shap_values = aggregate_shap_values / len(X)
 
-# Concatenate all dataframes
-results_df = pd.concat(df_list, ignore_index=True)
+# Create a DataFrame for analysis
+features_df = pd.DataFrame({
+    "Feature Index": range(average_shap_values.shape[1]),
+    "Average SHAP Value": average_shap_values.flatten()
+})
 
-# Save results to CSV
-results_df.to_csv("detailed_imagenet_shap_values.csv", index=False)
+# Sort by the most influential features
+sorted_features_df = features_df.sort_values(by="Average SHAP Value", ascending=False)
+
+# Save to CSV
+sorted_features_df.to_csv("average_shap_values.csv", index=False)
+
+# Optionally, you can also visualize the top positive and negative features
+top_features = sorted_features_df.head(10)
+bottom_features = sorted_features_df.tail(10)
+
+print("Top Positive Features:", top_features)
+print("Top Negative Features:", bottom_features)
 
